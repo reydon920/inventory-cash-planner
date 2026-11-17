@@ -1,0 +1,32 @@
+name: Refresh public sample
+on:
+  workflow_dispatch:
+    inputs:
+      sec_user_agent:
+        description: 'Real project/organization name and contact URL or email for SEC requests'
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Fetch and extract
+        env:
+          SEC_USER_AGENT: ${{ inputs.sec_user_agent }}
+        run: python -m scripts.refresh_data --sec-user-agent "$SEC_USER_AGENT"
+      - run: python -m unittest discover -v
+      - run: python -m cash_planner --output docs/report.html --showcase docs/showcase
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-sample-for-review
+          path: |
+            data/sample/
+            docs/

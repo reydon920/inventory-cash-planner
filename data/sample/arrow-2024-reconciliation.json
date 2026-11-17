@@ -1,0 +1,16 @@
+{
+  "source": "https://www.sec.gov/Archives/edgar/data/7536/000155837025000781/arw-20241231x10k.htm",
+  "accession": "0001558370-25-000781",
+  "method": "Independently transcribed from consolidated operations page 49 and balance sheets page 51; filing thousands converted to USD by multiplying by 1000.",
+  "start": "2024-01-01",
+  "end": "2024-12-31",
+  "days": 366,
+  "revenue": 27923324000,
+  "cost": 24630916000,
+  "opening inventory": 5187225000,
+  "closing inventory": 4709706000,
+  "opening receivables": 12238073000,
+  "closing receivables": 13030991000,
+  "opening payables": 10070015000,
+  "closing payables": 11047470000
+}
